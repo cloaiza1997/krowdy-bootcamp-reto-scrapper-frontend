@@ -25,9 +25,22 @@ function Profile(props: ProfileProps) {
         </a>
         <span className="fs-6 lh-sm text-capitalize">{profile.position}</span>
         <span className="fs-6 lh-sm fw-light">{profile.location}</span>
+        <span className="fs-6 lh-sm fw-light">
+          {profile.address || "-- Sin dirección --"}
+        </span>
+        <span className="fs-6 lh-sm fw-light">
+          {profile.phone || "-- Sin teléfono --"}
+        </span>
+        {profile.email ? (
+          <a href={"mailto:" + profile.email} className="fs-6 lh-sm fw-light">
+            {profile.email}
+          </a>
+        ) : (
+          <span className="fs-6 lh-sm fw-light">-- Sin email --</span>
+        )}
 
-        {profile.websites?.map((site) => (
-          <a href={site} target="_blank" rel="noreferrer">
+        {profile.websites?.map((site, index) => (
+          <a key={index} href={site} target="_blank" rel="noreferrer">
             <span className="fs-6 lh-sm">{site}</span>
           </a>
         ))}

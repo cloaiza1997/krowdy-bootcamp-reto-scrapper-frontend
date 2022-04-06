@@ -36,13 +36,13 @@ function ScrapperSearch() {
           if (success) {
             setProfileList(profileList);
           } else {
-            setError(message);
+            setError(message || "Error");
           }
 
           setLoading(false);
         })
         .catch((e) => {
-          setError(e.response?.data?.message);
+          setError(e.response?.data?.message || "Error");
           setLoading(false);
         });
     }
