@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import ContactButton from "./app/contact/components/button/ContactButton";
+import ProfileList from "./app/profiles/components/ProfileList";
+import ScrapperSearch from "./app/scrapper/components/ScrapperSearch";
 
 function App() {
+  const [search, setSearch] = useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="App px-5 py-4">
+      <div className="mb-4">
+        <button
+          type="button"
+          className="btn btn-primary mx-1"
+          onClick={() => setSearch(true)}
         >
-          Learn React
-        </a>
-      </header>
+          Búsqueda de perfiles
+        </button>
+
+        <button
+          type="button"
+          className="btn btn-success mx-1"
+          onClick={() => setSearch(false)}
+        >
+          Listado de perfiles
+        </button>
+      </div>
+
+      {search ? <ScrapperSearch /> : <ProfileList />}
+
+      <ContactButton />
     </div>
   );
 }
