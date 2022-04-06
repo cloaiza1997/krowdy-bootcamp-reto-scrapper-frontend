@@ -1,5 +1,5 @@
 import React from "react";
-import { ProfileProps } from "../Scrapper";
+import { ProfileProps } from "../Profile";
 
 function Profile(props: ProfileProps) {
   const { profile } = props;

@@ -1,8 +1,8 @@
-import { UserProfileProps } from "../Scrapper";
-import { URL_API } from "../../../shared/consts";
+import { URL_API_SCRAPPER } from "../../../shared/consts";
 import axios from "axios";
 import React, { useState } from "react";
-import Profile from "./Profile";
+import Profile from "../../profiles/components/Profile";
+import { UserProfileProps } from "../../profiles/Profile";
 
 function ScrapperSearch() {
   const [keyword, setKeyword] = useState("");
@@ -29,7 +29,7 @@ function ScrapperSearch() {
       setProfileList([]);
 
       axios
-        .post(URL_API, { keyword, totalPages })
+        .post(URL_API_SCRAPPER, { keyword, totalPages })
         .then((response) => {
           const { success, profileList, message } = response?.data || {};
 
@@ -49,12 +49,19 @@ function ScrapperSearch() {
   };
 
   return (
-    <div className="px-5 py-4">
+    <div>
       <form
         className="d-flex flex-column justify-content-center align-items-center mb-3 border p-4 rounded-3"
         onSubmit={onSubmit}
       >
-        <h1 className="mb-4">Consulta de perfiles de LinkedIn</h1>
+        <h1 className="mb-2">Consulta de perfiles de LinkedIn</h1>
+
+        <div className="alert alert-warning my-4" role="alert">
+          <span className="fw-bold">Tener en cuenta:</span> No realizar la
+          búsqueda de manera muy seguida, puede generar problemas, como por
+          ejemplo, bloquear la cuenta de LinkedIn utilizada para la consulta de
+          los perfiles
+        </div>
 
         <div className="input-group flex-nowrap mb-4">
           <span className="input-group-text">Búscar perfiles</span>
@@ -86,7 +93,6 @@ function ScrapperSearch() {
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="3">5</option>
-            <option value="3">10</option>
           </select>
         </div>
 
