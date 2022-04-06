@@ -5,7 +5,7 @@ function ContactButton(props: any) {
     <>
       <button
         type="button"
-        className="btn bg-success bg-opacity-10 float-end m-3 shadow"
+        className="btn bg-success bg-opacity-10 contact-button position-fixed m-3 shadow"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
